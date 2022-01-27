@@ -140,10 +140,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Vx.gray300,
+      backgroundColor: Color(0xFF2D4263),
       body: ZStack([
         VxBox()
-            .blue600
+            .color(Color(0xFF191919))
             .size(context.screenWidth, context.percentHeight * 30)
             .make(),
         VStack([
@@ -152,25 +152,26 @@ class _MyHomePageState extends State<MyHomePage> {
           (context.percentHeight * 6).heightBox,
           VxBox(
                   child: VStack([
-            "Balance".text.gray700.xl2.semiBold.makeCentered(),
+            "Balance".text.color(Color(0xFFC84B31)).xl4.bold.makeCentered(),
             10.heightBox,
             data
                 ? "\$$myData".text.bold.xl4.makeCentered().shimmer()
                 : CircularProgressIndicator().centered()
           ]))
               .p32
-              .white
+              .color(Color(0xFF2D4263))
               .size(context.screenWidth, context.percentHeight * 25)
               .rounded
-              .shadowXl
               .make(),
-          30.heightBox,
+          5.heightBox,
           Container(
             margin: EdgeInsets.all(50.0),
             child: TextFormField(
               controller: myAmount,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
+                fillColor: Colors.white,
+                filled: true,
                 labelText: 'Enter the amount',
               ),
             ).centered(),
@@ -183,7 +184,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.blue),
                           foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white)),
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          textStyle: MaterialStateProperty.all(
+                              const TextStyle(fontSize: 20))),
                       onPressed: () => getBalance(myAddress),
                       label: Text('Refresh'))
                   .h(50),
@@ -196,7 +199,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.red),
                           foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white)),
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          textStyle: MaterialStateProperty.all(
+                              const TextStyle(fontSize: 20))),
                       onPressed: () => withdraw(myAddress),
                       label: Text('Withdraw'))
                   .h(50),
@@ -207,7 +212,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.green),
                           foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white)),
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          textStyle: MaterialStateProperty.all(
+                              const TextStyle(fontSize: 20))),
                       onPressed: () => deposit(myAddress),
                       label: Text('Deposit'))
                   .h(50),
